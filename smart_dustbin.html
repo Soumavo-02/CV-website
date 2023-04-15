@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Smart Dustbin</title>
+    </head>
+    <body>
+        <h1>Smart Dustbin</h1>
+        <img src="Dustbin_mainpic (1).jpg">
+        <h2>Introduction</h2>
+        <p>This model is developed usin Arduino Uno.Arduino Uno is an open-source microcontroller board based on the processor ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller. Just plug it into a computer with a USB cable or power it with an adapter to get started. </p>       
+        <img src="Arduino_Uno(resized).jpg">
+        <h3>Components Used</h3>
+        <ul>
+            <li>Arduino_Uno-R3</li>
+            <li>Ultrasonic Sensor (HC-SR04)</li>
+            <li>SG-90 Micro Servo Motor</li>
+            <li>Dustbin</li>
+        </ul>
+        <h3>Working Concept</h3>
+        <p>Smart Dustbin works on the principle of object detection using an ultrasonic sensor. The ultrasonic sensor transmits sound waves. These waves get reflected wheneveran object comes into the vicinity of the sensor. This genenrates an electrical signal which is used to open the dustbin lid.</p>
+        <p>The smart dustbin uses an Ultrasonic sensor HC-SR04 to detect objects in front. It then sends the signals to Arduino Uno. The Arduino understands the signal and sends a signal to the Servomotor which opens the flap on top of the dustbin.Here I have programmed it to open the race for only 3 seconds after 3 seconds the flap automatically closes. You can change that time just by making minor changes to the code in Arduino IDE.</p>
+        <img src="https://cdn.shopify.com/s/files/1/0559/1970/6265/files/Working_Principle_smart_dustbin_480x480.png?v=1658983121">
+        <table cellspacing="5">
+            <tr>
+                <td><img src="Dustbin_closepic (1).jpg"></td>
+                <td><img src="DUstbin_openpic (1).jpg"></td>
+            </tr>
+        </table>
+        <h3>Circuit Diagram</h3>
+        <p>The complete circuit diagram of arduino based smart dustbin is shown below</p>
+        <center>
+        <img src="Dustbin_cktdiagram.jpg"> <br>
+        <img src="Dustbin_ckt (1).jpg">
+        </center>
+        <p>The circuit diagram for smart dustbin contains three main components: Arduino Uno, Power supply and an ultrasonic sensor.The Ultrasonic sensor HC-SR04 pins echo and trig are connected to Arduino Uno pins 5 and 6 respectively. The VCC pin is connected to 5V on Arduino Uno and both the grounds are connected together. A 9v battery has been connected to Vin pin on the Arduino Uno and grounds are connected together. </p>
+        <h3>Code</h3>
+        <img src="dustbin_code.JPG">
+        <script src="" async defer></script>
+    </body>
+</html>

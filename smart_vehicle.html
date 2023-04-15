@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smart Vehicle</title>
+    </head>
+    <body>
+       <h1>Smart Vehicle (Obstacle Avoiding Car)</h1>
+       <center>
+       <img src="Smart_vehicle_mainpic (1).jpg">
+       </center>
+       <h2>Introduction</h2>
+       <p>This model is developed usin Arduino Uno.Arduino Uno is an open-source microcontroller board based on the processor ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller. Just plug it into a computer with a USB cable or power it with an adapter to get started. </p>       
+        <img src="Arduino_Uno(resized).jpg">
+        <h3>Components Used:</h3>
+        <ul>
+            <li>Arduino Uno</li>
+            <li>L293D Motor Driver</li>
+            <li>Wheels</li>
+            <li>Ultrasonic Sensor (HC-SR04)</li>
+            <li>DC motor 300rpm</li>
+        </ul>       
+        <center>
+            <h3>Pin configuration of L293D Motor Driver</h3>
+            <img src="L293D (1).jpg">
+            <p>L293D is a motor driver integrated chip. It is a dual H-bridge motor driver integrated chip. It also acts as an amplifier. It takes on a low current signal and gives the output of a high current signal.</p>
+        </center>
+        <h3>Working Concept</h3>
+        <p>The main component in the operation of the obstacle-avoiding car is the Ultrasonic sensor HC-SR04. This sensor uses the sonar principle to calculate the distance to the objects in front of it. This sensor is used in a lot of projects which require fast and economical distance measurement. This is possible because the sensor is very small in size and can be mounted anywhere on the chassis.There are 4 main components to this project: Arduino Uno, Ultrasonic Sensor, DC motor, L293D motor driver.When the power supply is connected to the Arduino, the motors start rotating and the car starts moving. As soon as the car reaches near an obstacle, there is a threshold distance set by the user in the Arduino code. If the distance of the obstacle is below this threshold then the ultrasonic sensor sends a signal to the Arduino.As soon as Arduino gets the signal from the ultrasonic sensor, it sends the signal to the motor driver to stop rotating the motors.After this, it again sends the signal to the motor driver to turn the car to the left side. And the car is turned to the left side till the point when there is no obstacle in front of the car. The car again starts moving forward and moves forward till it finds another obstacle. The above process is repeated till the power supply is cut off.</p>
+        <center>
+            <img src="ezgif-2-912d5ee24d (1).gif">
+        </center>
+        <h3>Circuit Diagram</h3>
+        <center>
+            <img src="smartvehiclecktdiag (1).jpg">
+            <table cellspacing="25">
+                <thead>
+                    <tr>
+                        <td><strong>Pins on Arduino Uno</strong></td>
+                        <td><strong>Pins on Ultrasonic Sensor</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>5V</td>
+                        <td>VCC</td>
+                    </tr>
+                    <tr>
+                        <td>GND</td>
+                        <td>GND</td>
+                    </tr>
+                    <tr>
+                        <td>digital Pin 10</td>
+                        <td>Echo</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Pin 11</td>
+                        <td>Trig</td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td><strong>Pins on Arduino Uno</strong></td>
+                        <td><strong>Pins on L293D</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5V</td>
+                        <td>Pin 1</td>
+                    </tr>
+                    <tr>
+                        <td>GND</td>
+                        <td>Pin 5</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Pin 2</td>
+                        <td>Pin 10</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Pin 3</td>
+                        <td>Pin 15</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Pin 8</td>
+                        <td>Pin 7</td>
+                    </tr>
+                    <tr>
+                        <td>Digital Pin 9</td>
+                        <td>Pin 2</td>
+                    </tr>
+            </table>
+        </center>
+        <h3>Code</h3>
+        <img src="codeofsmartvehicle.JPG">
+        
+        
+        <script src="" async defer></script>
+    </body>
+</html>

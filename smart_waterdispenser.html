@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Automatic Water Dispenser Machine</title>
+    </head>
+    <body>
+       
+       <h1>Automatic Water Dispenser Machine</h1>
+            <center>
+        <img src="Dispensermodel (1).jpg">
+            </center>
+       <h2>Introduction:</h2>
+       <p>This model is developed using Arduino Nano. The Arduino Nano is a small, complete, and breadboard-friendly board based on the ATmega328P released in 2008. It offers the same connectivity and specs of the Arduino Uno board in a smaller form factor. The Arduino Nano is equipped with 30 male I/O headers, in a DIP-30-like configuration, which can be programmed using the Arduino Software integrated development environment (IDE), which is common to all Arduino boards and running both online and offline. The board can be powered through a type-B mini-USB cable or from a 9 V battery.</p>
+       <img src="https://in.element14.com/productimages/standard/en_GB/1848691-40.jpg" alt="Arduino Nano">
+       <h3> Components Used</h3>
+        <ul>
+            <li>Arduino Nano</li> 
+            <li>5v DC Relay</li>
+            <li>Ultrasonic Sensor(HC-SR04)</li>
+            <li>6V DC Micro Airpump</li>
+        </ul>
+        <h3>Working Concept:</h3>
+        <p>The Concept behind the Automatic Water Dispenser is very simple. We will use a HCSR04 Ultrasonic Sensor to check if any object such that the glass is placed before the dispenser. A solenoid valve will be used to control the flow of water, which is when energised the water will flow out and when de-energised the water will be stopped. So we will write an Arduino program which always checks if any object is placed near the tap, if yes then the solenoid will be turned on and wait till the object is removed, once the object is removed the solenoid will turn off automatically thus closing the supply of water.</p>
+        <center>
+        <img src="ezgif-3-8fcae18977.gif">
+        </center>
+        <h3>Circuit Diagram</h3> 
+        <p>The complete circuit diagram for Arduino based water Dispenser is shown below</p>
+        <center>
+       <img src="dispeserckt.jpg">
+       </center>
+       <p>The solenoid valve used in this project is a 12V valve with a maximum current rating of 1.2A and a continuous current rating of 700mA. That is when the Valve is turned on it will consume about 700mA to keep the valve turned on. As we know an Arduino is a Development board which operates with 5V and hence we need a switching driver circuit for the Solenoid to turn it on and off.</p>
+       <p>The switching device used in this project is the IRF540N N-Channel MOSFET. It has the 3 pins Gate, Source and Drain from pin 1 respectively. As shown in the circuit diagram the positive terminal of the solenoid is powered with the Vin pin of the Arduino. Because we will use a 12V adapter to power the Arduino and thus the Vin pin will output 12V which can be used to control the Solenoid. The negative terminal of the solenoid is connected to the ground through the MOSFET's Source and Drain pins. So the solenoid will be powered only if the MOSFET is turned on.</p>
+       <p>The gate pin of the MOSFET is used to turn it on or off. It will remain off if the gate pin is grounded and will turn on if a gate voltage is applied. To keep the MOSFET turned off when no voltage is applied to gate pin, the gate pin is pulled to ground though a 10k resistor. The Arduino pin 12 is used to turn on or off the MOSFET, so the D12 pin is connected to the gate pin through a 1K resistor. This 1K resistor is used for current limiting purpose.The Ultrasonic Sensor is powered by the +5V and ground pins of the Arduino. The Echo and Trigger pin is connected to the pin 8 and pin 9 respectively. We can then program the Arduino to use the Ultrasonic sensor to measure the distance and turn on the MOSFET when an object is detect. The whole circuit is simple and hence can be easily build on top of a breadboard. Mine looked something like this below after making the connections.</p>
+       <img src="Dispenser.jpg">
+       <h2>Exterior Design</h2>
+       <img src="dispenserexterior.jpg">
+       <h2>Programming the Arduino Board</h2>
+       <p>For this project we have to write a program which uses the HCSR-04 Ultrasonic sensor to measure the distance of the object in front of it. When the distance is less than 10cm we have to turn on the MOSFET and else we have to turn off the MOSFET. We will also use the on board LED connected to pin 13 and toggle it along with the MOSFET so that we can ensure if the MOSFET is in turned on or off state.</p>
+       <p>The program starts with macros definition. We have the trigger and echo pin for the Ultrasonic sensor and the MOSFET gate pin and LED as the I/O for our Arduino. So we have defined to which pin these will be connected to. In our hardware we have connected the Echo and Trigger pin to 8 and 9th digital pin respectively. Then the MOSFET pin is connected to pin 12 and the onboard LED by default is connected to pin 13.Inside the setup function we declare which pins are input and which are output. In our hardware only the Echo pin of Ultrasonic(US) sensor is the input pin and rest all are output pins. </p>
+       <p>Inside the main loop function we call for the function called measure_distance(). This function uses the US sensor to measure the distance of the object in front of it and updates the value to the variable 'distance'. To measure distance using US sensor the trigger pin must first be held low for two micro seconds and then held high for ten microseconds and again held low for two micro seconds. This will send a sonic blast of Ultrasonic signals into the air which will get reflected by the object in front of it and the echo pin will pick up the signals reflected by it. Then we use the time taken value to calculate distance of the object ahead of the sensor. </p>
+       <p>Once the distance is calculated, we have to compare the value of distance using a simple if statement and if the value is less than 10cm we make the MOSFET and LED to go high, in the following else statement we make the MOSFET and LED to go low.</p>
+       <h3>Code</h3>
+       <img src="Screenshot 2023-04-09 224906.png">   
+       <script src="" async defer></script>
+    </body>
+</html>
